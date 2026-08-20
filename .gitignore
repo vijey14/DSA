@@ -1,0 +1,7 @@
+# Compiled C/C++ executables
+*.exe
+
+# Common build output directories
+build/
+Debug/
+Release/
