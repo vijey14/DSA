@@ -29,8 +29,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Personal Folder/Learnings/coding practice/DSA",
-      "program": "d:/Personal Folder/Learnings/coding practice/DSA/build/Debug/outDebug",
+      "cwd": "d:/Personal Folder/Learnings/coding practice/DSA/Structure",
+      "program": "d:/Personal Folder/Learnings/coding practice/DSA/Structure/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
