@@ -36,7 +36,8 @@ int main()
 {
     str var1 = { 1, 2, NULL };
     str var2 = { 10, 20, NULL };
-    var1.next = &var2;
+    str var3 = { 100, 200, NULL };
+    var1.next = &var2; //stores the address of var2 in var1.next
     str *ptr1 = &var1;  
     printf("var2.mem1: %d\nvar2.mem2: %d", ptr1->next->
     mem1, ptr1->mem2); 
