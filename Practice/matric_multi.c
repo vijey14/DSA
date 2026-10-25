@@ -29,7 +29,7 @@ int main(){
     for(i =0; i<r1; i++){
         for(j=0; j <c2 ; j++){
             c[i][j]= 0;
-            for(k =0; k<c2 ; k++){
+            for(k =0; k<c1 ; k++){
                 c[i][j] += a[i][k] * b[k][j];
             }
         }

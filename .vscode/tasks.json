@@ -4,7 +4,7 @@
         {
             "label": "Build current C file",
             "type": "shell",
-            "command": "gcc",
+            "command": "C:/MinGW/bin/gcc.exe",
             "args": [
                 "-g",
                 "${file}",
@@ -31,8 +31,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                ""
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
                 "cwd": "C:/MinGW/bin"
