@@ -62,25 +62,145 @@ void countNode(void){
     printf("No of node is: %d \n", count);
 }
 
-int searchElement(int target){
-    struct Node* temp = head;
-    int position = 0;
-    while(temp != NULL){
-        if(temp -> data == target){
-            printf("\n Position is: %d", position + 1);
+int searchElement(int target)
+{
+    struct Node *temp = head;
+    int position = 1;
+
+    while (temp != NULL)
+    {
+        if (temp->data == target)
+        {
+            printf("\nPosition is: %d\n", position);
+            return position;
         }
+
         position++;
-        temp = temp -> next;
+        temp = temp->next;
     }
+
     return -1;
-    
 }
+
+void insertSorted(int value)
+{
+    struct Node *newNode = createNode(value);
+    struct Node *temp = head;
+
+    // Case 1: Empty list or insert at the beginning
+    if (head == NULL || value <= head->data)
+    {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+
+    // Case 2: Find the correct position
+    while (temp->next != NULL && temp->next->data < value)
+    {
+        temp = temp->next;
+    }
+
+    // Case 3: Insert the new node
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+void deletePosition(int position)
+{
+    if (position < 1 || head == NULL)
+    {
+        return;
+    }
+
+    if (position == 1)
+    {
+        struct Node *nodeToDelete = head;
+        head = head->next;
+        free(nodeToDelete);
+        return;
+    }
+
+    struct Node *temp = head;
+    for (int i = 1; i < position - 1 && temp->next != NULL; i++)
+    {
+        temp = temp->next;
+    }
+
+    if (temp->next == NULL)
+    {
+        return;
+    }
+
+    struct Node *nodeToDelete = temp->next;
+    temp->next = nodeToDelete->next;
+    free(nodeToDelete);
+}
+
+void deleteNode(int value)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+
+    if (head->data == value)
+    {
+        struct Node *nodeToDelete = head;
+        head = head->next;
+        free(nodeToDelete);
+        return;
+    }
+
+    struct Node *temp = head;
+    while (temp->next != NULL && temp->next->data != value)
+    {
+        temp = temp->next;
+    }
+
+    if (temp->next != NULL)
+    {
+        struct Node *nodeToDelete = temp->next;
+        temp->next = nodeToDelete->next;
+        free(nodeToDelete);
+    }
+}
+
+void deleteOccurance(int target){
+    struct Node* temp = head;
+    struct Node* del = NULL;
+
+    if(head -> data == target){
+        del = head;
+        head = head -> next;
+        free(del);
+    }
+    while(temp -> next != NULL){
+        if (temp -> next -> data == target){
+            del = temp -> next;
+            temp -> next = del -> next;
+            free(del);
+        }
+        else{
+            temp = temp -> next;
+        }
+    }
+}
+
+
+
 
 int main(void)
 {
     insertAtEnd(10);
     insertAtEnd(20);
     insertAtEnd(30);
+    insertAtEnd(40);
+    insertAtEnd(20);
+    insertAtEnd(60);
+
+    deleteOccurance(20);
+    
 
     countNode();
     traverse();
