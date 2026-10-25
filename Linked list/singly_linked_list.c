@@ -187,7 +187,32 @@ void deleteOccurance(int target){
     }
 }
 
+void FreeList(){
+    struct Node* temp;
+    while (head != NULL){
+        temp = head;
+        head = head -> next;
+        free(temp);
+        temp = head;
+    }
+}
 
+
+void reverseList(void){
+    struct Node* prev = NULL;
+    struct Node* curr = head;
+    struct Node* forward = NULL;
+
+    while(curr != NULL){
+        forward = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = forward;
+
+    }
+    head = prev;
+
+}
 
 
 int main(void)
@@ -196,10 +221,10 @@ int main(void)
     insertAtEnd(20);
     insertAtEnd(30);
     insertAtEnd(40);
-    insertAtEnd(20);
+    insertAtEnd(50);
     insertAtEnd(60);
+    reverseList();
 
-    deleteOccurance(20);
     
 
     countNode();
