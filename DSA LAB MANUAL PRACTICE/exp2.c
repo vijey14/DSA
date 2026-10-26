@@ -16,11 +16,6 @@ int main(){
 
     ptr = malloc(sizeof(struct Employee));
 
-    if(ptr == NULL){
-        printf("Memory allocation failed");
-        return;
-    }
-
     printf("Enter employee id: ");
     scanf("%d", &ptr->emp_id);
 
@@ -45,6 +40,6 @@ int main(){
 
     free(ptr);
 
-    return 0;
+    return EXIT_SUCCESS;
 
 }
