@@ -63,7 +63,7 @@ void delete(){
     }
 
     for(int i = pos; i < n - 1 ;i++){
-        list[i] = list[i +1];
+        list[i] = list[i + 1];
     }
     n--;
 
