@@ -13,16 +13,16 @@ struct Node* top = NULL;
 void push(int value){
     struct Node* newNode = malloc(sizeof(struct Node));
 
-    if (newNode == NULL){
+    if(newNode == NULL){
         printf("Memory allocation failed");
         return;
     }
 
-    newNode -> data = value;
-    newNode -> next = top;
+    newNode->data = value;
+    newNode->next = top;
     top = newNode;
 
-    printf("Element is added successfully");
+    printf("\nElement added successfully");
 }
 
 void pop(){
@@ -65,6 +65,29 @@ void freeStack(){
     }
 }
 
+void reverse(){
+
+    if(top == NULL){
+        printf("Stack is Empty");
+        return;
+    }
+
+    struct Node* prev = NULL;
+    struct Node* curr = top;
+    struct Node* next =  NULL;
+
+    while(curr != NULL){
+        next = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = next;
+    }
+    top = prev;
+    printf("Reversed Stack: \n");
+    display();
+    
+}
+
 
 int main(){
     int choice, value;
@@ -75,7 +98,8 @@ int main(){
         printf("2. Pop\n");
         printf("3. Display\n");
         printf("4. FreeStack\n");
-        printf("5. Exit\n");
+        printf("5. Reverse Stack \n");
+        printf("6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -98,12 +122,15 @@ int main(){
             freeStack();
             break;
         case 5:
+            reverse();
+            break;
+        case 6:
             printf("Existing");
             break;
         default:
             printf("Invalid Value");
             break;
         }
-    }while(choice != 5);
+    }while(choice != 6);
     freeStack();
 }
